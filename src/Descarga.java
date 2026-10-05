@@ -29,11 +29,11 @@ public class Descarga extends Thread {
             }
 
             int porcentaje = i * 10;
-            System.out.println(NombreArchivo + porcentaje + "%");
+            System.out.println(NombreArchivo + " / " + porcentaje + " % ");
         }
 
         this.TiempoTotal = System.currentTimeMillis() - inicio;
-        System.out.println(NombreArchivo + "completado en " + this.TiempoTotal + "ms");
+        System.out.println(NombreArchivo + " " + "completado en " + this.TiempoTotal + " ms ");
     }
 
 
