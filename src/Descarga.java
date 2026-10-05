@@ -1,41 +1,40 @@
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class Descarga  extends Thread{
-
-    private String nombreArchivo;
-    private int tiempoBloque;
-    private long tiempoTotal;
-
-    public Descarga(String nombreArchivo){
-        this.nombreArchivo = nombreArchivo;
-        Random random = new Random();
-        this.tiempoBloque = 100 + random.nextInt(401);
-
-    }
+public class Descarga extends Thread {
 
 
+    private String NombreArchivo;
+    private int TiempoBloque;
+    private long TiempoTotal;
 
-    @Override
-    public  void run(){
-        long tiempoInicio = System.currentTimeMillis();
+    public Descarga(String NombreArchivo){
 
-        for (int i = 1; i <= 10; i++) {
-         try{
-             Thread.sleep(tiempoBloque);
-         } catch (InterruptedException e) {
-            System.out.println(nombreArchivo + "Descarga parada");
-            return;
-         }
-            int porcentaje = i * 10;
-            System.out.println(nombreArchivo + porcentaje + "%");
-        }
-        long tiempoFin = System.currentTimeMillis();
-        this.tiempoTotal = tiempoFin - tiempoInicio;
+        this.NombreArchivo = NombreArchivo;
+        this.TiempoBloque = ThreadLocalRandom.current().nextInt(100,501);
 
-        System.out.println(nombreArchivo + "completado en " + this.tiempoTotal + "ms");
     }
 
     public long getTiempoTotal(){
-        return tiempoTotal;
+        return TiempoTotal;
     }
+
+    public void run() {
+        long inicio = System.currentTimeMillis();
+        for (int i = 1; i <= 10; i++) {
+            try {
+                Thread.sleep(TiempoBloque);
+            } catch (InterruptedException e) {
+                System.out.println(NombreArchivo + "Descarga parada");
+                return;
+            }
+
+            int porcentaje = i * 10;
+            System.out.println(NombreArchivo + porcentaje + "%");
+        }
+
+        this.TiempoTotal = System.currentTimeMillis() - inicio;
+        System.out.println(NombreArchivo + "completado en " + this.TiempoTotal + "ms");
+    }
+
+
 }
