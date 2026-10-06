@@ -93,6 +93,6 @@ public class GestorDescargas {
 
         System.out.println("Todas las descargas han terminado.");
         System.out.println("Tiempo real: " + tiempoReal + " ms");
-        System.out.println("Si se hubieran descargado una detrás de otra: " + sumaTiempos + " ms");
+        System.out.println("Suma de todos los tiempos: " + sumaTiempos + " ms");
     }
 }
