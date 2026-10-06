@@ -18,6 +18,9 @@ public class Descarga extends Thread {
         return TiempoTotal;
     }
 
+    public String getNombreArchivo(){return NombreArchivo;}
+
+
     public void run() {
         long inicio = System.currentTimeMillis();
         for (int i = 1; i <= 10; i++) {
